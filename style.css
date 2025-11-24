@@ -1,0 +1,424 @@
+/* Global Reset and Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --netflix-red: #E50914;
+    --dark-bg: #000000;
+    --dark-section: #222222;
+    --text-color: #FFFFFF;
+    --light-text: #AAAAAA;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Helper Class */
+.content-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.section {
+    padding: 70px 0;
+    border-bottom: 8px solid var(--dark-section);
+}
+
+/* --- Header Styling --- */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 10;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.logo {
+    color: var(--netflix-red);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+}
+
+.language-select {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--light-text);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sign-in-btn {
+    background-color: var(--netflix-red);
+    color: var(--text-color);
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sign-in-btn:hover {
+    background-color: #f40612;
+}
+
+
+/* --- Hero Section (The background image/video part) --- */
+.hero-section {
+    position: relative;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 8px solid var(--dark-section);
+    /* Placeholder for background image */
+    background-image: url("https://miro.medium.com/v2/resize:fit:1200/1*0u2ynz-XDDaq3suwHtC7eQ.jpeg"); 
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    background-image: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.8) 0, 
+        rgba(0, 0, 0, 0) 60%, 
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    padding: 0 30px;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero-content h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.email-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.email-form input[type="email"] {
+    padding: 18px 15px;
+    font-size: 1rem;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: var(--dark-bg);
+}
+
+.get-started-btn {
+    display: inline-block;
+    background: #e50914;   /* Netflix Red */
+    color: white;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.get-started-btn:hover {
+    background: #f6121d;   /* Slightly brighter red on hover */
+}
+
+.get-started-btn:hover {
+    background-color: #f40612;
+}
+
+/* --- Trending Section --- */
+/* ... (Code for .trending-section h2 and .trending-cards remains the same) ... */
+
+.trending-cards {
+    display: flex;
+    gap: 70px; 
+    white-space: nowrap; 
+    overflow-x: scroll;
+    padding-bottom: 40px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.trending-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.trending-cards .card {
+    position: relative;
+    /* card size 180x270px set */
+    min-width: 200px; 
+    height: 300px; 
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    flex-shrink: 0; 
+    
+    /* important content */
+    display: block; /* block element */
+}
+
+/* img sizing */
+.trending-cards .card img {
+    /* one two line */
+    width: 100%;
+    height: 100%;
+    
+    /* online img (distort) no */
+    object-fit: cover; 
+    
+    /* online imaige */
+    display: block; 
+}
+
+
+.trending-cards .card span {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+/* --- More Reasons Section --- */
+.more-reasons-section {
+    background-color: var(--dark-bg);
+    padding-top: 50px;
+}
+
+.more-reasons-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.reason-card {
+    padding: 20px;
+}
+
+.reason-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.reason-card p {
+    color: var(--light-text);
+}
+
+/* Updated Icon Placeholder Size - Smaller Icons */
+.features{
+  max-width:var(--max);
+  margin:28px auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:0 22px 22px 22px;
+}
+.feature{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:18px;
+  border-radius:12px;
+  min-height:150px;
+}
+.icon{
+  width:60px;height:60px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;font-size:28px;
+  background:linear-gradient(135deg, #ff6b6b, #ffb26b);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+  margin-bottom:12px;
+}.features{
+  max-width:var(--max);
+  margin:28px auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:0 22px 22px 22px;
+}
+.feature{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:18px;
+  border-radius:12px;
+  min-height:150px;
+}
+.icon{
+  width:60px;height:60px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;font-size:28px;
+  background:linear-gradient(135deg, #ff6b6b, #ffb26b);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+  margin-bottom:12px;
+}
+
+
+/* --- FAQ Section --- */
+.faq-section {
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.faq-list {
+    list-style: none;
+    max-width: 815px;
+    margin: 0 auto 50px auto;
+}
+
+.faq-item {
+    background-color: var(--dark-section);
+    color: var(--text-color);
+    padding: 20px 30px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.8s;
+}
+
+.faq-item:hover {
+    background-color: #414141;
+}
+
+.toggle-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.ready-to-watch {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.bottom-form {
+    margin-bottom: 50px;
+}
+
+/* --- Footer Styling --- */
+.footer {
+    padding: 30px 0;
+    color: var(--light-text);
+}
+
+.footer p {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.footer .language-select {
+    margin-bottom: 20px;
+}
+
+.netflix-india {
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Adjustments (for smaller screens) --- */
+@media (max-width: 950px) {
+    .reasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h3, .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .email-form {
+        flex-direction: column;
+    }
+
+    .email-form input[type="email"] {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .get-started-btn {
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        width: 50%;
+    }
+    
+    .reasons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-item {
+        font-size: 1.1rem;
+    }
+}
